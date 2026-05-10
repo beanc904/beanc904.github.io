@@ -1,4 +1,12 @@
-site_name: Bean's Space
+site_name: Coffee Bean's Space
+repo_name: beanc904.github.io
+repo_url: https://github.com/beanc904/beanc904.github.io
+copyright: Copyright &copy 2026-2026 Coffee Bean
+edit_url: https://github.com/beanc904/beanc904.github.io/tree/main/docs
 
 theme:
   name: material
+  logo: assets/logo.jpg
+
+extra:
+  generator: false # delete footer mkdocs copyright

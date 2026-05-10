@@ -8,3 +8,11 @@ dependencies = [
     "mkdocs>=1.6.1",
     "mkdocs-material>=9.7.6",
 ]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.basedpyright]
+typeCheckingMode = "recommended"
+pythonVersion = "3.12"
