@@ -1,0 +1,47 @@
+name: deploy-pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: setup-python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: install-dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: build-site
+        run: |
+          mkdocs build
+
+      - name: setup-pages
+        uses: actions/configure-pages@v5
+
+      - name: upload-artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: deploy-pages
+        uses: actions/deploy-pages@v4
